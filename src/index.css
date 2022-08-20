@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@100;300;400&display=swap');
+:root {
+  --color-bg-btn: #e9e9ed;
+  --color-bg-main: #fff;
+  --color-fonts-para: ##5b5b5b;
+  --color-fonts-heading: #000;
+  --color-hr: #d2d2d2;
+  --font-f-1: 'Courier New', Courier, monospace;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 2rem;
+  margin: 2rem auto;
+  width: 100vw;
+  background-color: var(--color-bg-main);
+  color: #000;
+  text-align: center;
+  font-family: var(--font-f-1);
+  transition: all 0.2s ease;
+}
+.App {
+  width: 100%;
+}
+h1 {
+  text-transform: uppercase;
+  margin-top: 5rem;
+  font-size: 3rem;
+  font-family: var(--font-f-1);
+  font-weight: 700;
+}
+
+.underline {
+  height: 1px;
+  background-color: var(--color-hr);
+  width: 60%;
+  margin: 5rem auto;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.btn {
+  background-color: var(--color-bg-btn);
+  color: var(--color-fonts-heading);
+  text-transform: capitalize;
+  padding: 1.5rem 6rem;
+  border-radius: 4rem;
+  border: none;
+  outline: none;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.btn:active,
+.btn:link {
+  outline: none;
+  transform: translateY(0.2rem);
+}
+
+.card {
+  margin: 3rem auto 0;
+  max-width: 60rem;
+  padding: 4rem;
+  box-shadow: var(--light-shadow);
+  transition: all 0.2s ease;
+}
+.card p {
+  color: var(--color-bg-para);
+  font-family: var(--font-f-1);
+  font-weight: 600;
+}
+
+.loader {
+  margin: 40vh auto;
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  animation: spin 1s linear infinite;
+}
+.loader-mini {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 610px) {
+  body {
+    padding: 0 2rem;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .card {
+    max-width: max-content;
+  }
+  .loader {
+    width: 10rem;
+    height: 10rem;
+    border: 12px solid #f3f3f3;
+    border-top: 12px solid #3498db;
+  }
+}
+@media screen and (max-width: 400px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  .loader {
+    width: 6rem;
+    height: 6rem;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+  }
+} ;
