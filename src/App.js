@@ -3,29 +3,33 @@ import React, { useState, useEffect } from 'react';
 import Button from './components/Button';
 import { data as buttons } from './data';
 
+//setting baseLink
 const baseUrl = 'https://excuser.herokuapp.com/v1/excuse';
 
 function App() {
+  //currently showing excuse
   const [excuse, setExcuse] = useState(null);
   const [isMiniLoading, setIsMiniLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+
+  const hideLoader = () => {
+    setIsLoading(false);
+    setIsMiniLoading(false);
+  };
+
   const getData = async (cat) => {
     setIsMiniLoading(true);
-    console.log(`${baseUrl}/id/${cat}`);
     try {
       if (typeof cat === 'string') {
         const { data } = await axios.get(`${baseUrl}/${cat}`);
-        // console.log(data[0].excuse);
         setExcuse(data[0].excuse);
-        setIsLoading(false);
-        setIsMiniLoading(false);
+        hideLoader();
       } else if (typeof cat === 'number') {
         const {
           data: { excuse },
         } = await axios.get(`${baseUrl}/id/${cat}`);
         setExcuse(excuse);
-        setIsLoading(false);
-        setIsMiniLoading(false);
+        hideLoader();
       }
     } catch (error) {
       console.log(error.message);
@@ -34,8 +38,6 @@ function App() {
   useEffect(() => {
     getData(408); //getting data from the api with id -> to always show the excuse(given in design) on first render
   }, []);
-
-  useEffect(() => {}, [excuse]);
 
   if (isLoading) {
     return <div className='loader'></div>;
